@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import BackButton from "./BackButton"
 import Rating from "./Rating"
 import HorizontalList from "./HorizontalList"
+import FavoriteButton from "./FavoriteButton"
 
 function Movie(props){
     const API_ONE_MOVIE = "https://api.themoviedb.org/3/movie/"
@@ -23,13 +24,14 @@ function Movie(props){
                 setMovie(data)
             })
     },[id])
-
+    
     return(
         <div className="movie">
              {
                 movie ?
                     <div className="movie-content">
                         <div className="movie-action">
+                            <FavoriteButton movie={movie} addToFavorite={props.addToFavorite} text="Ajouter aux favoris"/>
                             <BackButton onClick={()=>navigation('/')} text="Revenir à la liste"/>
                         </div>
                         <div className="movie-header">
